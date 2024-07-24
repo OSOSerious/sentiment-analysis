@@ -1,39 +1,80 @@
-# Sentiment Analysis Tool for Beginners
+# Sentiment Analysis Project
 
-## What is this?
-This is a computer program that can read a sentence and guess if it's happy, sad, or neutral.
+This project implements a simple sentiment analysis model using Python and scikit-learn. It classifies text into three categories: positive, negative, or neutral.
 
-## Why is it useful?
-It can help you understand how people feel about your product or service by looking at their comments.
+## Features
 
-## What do I need to use it?
-- A computer
-- Python (a type of computer language) installed on your computer
-- Some extra Python tools (we'll show you how to get them)
+- Text preprocessing (lowercasing, punctuation removal, tokenization, stopword removal)
+- Sentiment classification using Multinomial Naive Bayes
+- Easy-to-use interface for classifying new text
 
-## How do I set it up?
-1. Download all the files from this project to your computer
-2. Open a program called "Command Prompt" or "Terminal"
-3. Type this and press Enter: `pip install -r requirements.txt`
-4. Type these two lines (press Enter after each):
+## Requirements
+
+- Python 3.6+
+- pandas
+- numpy
+- scikit-learn
+- nltk
+
+## Installation
+
+1. Clone this repository or download the `sentiment_analysis.py` file.
+
+2. Install the required packages:
+
    ```
-   python -c "import nltk; nltk.download('punkt')"
-   python -c "import nltk; nltk.download('stopwords')"
+   pip install pandas numpy scikit-learn nltk
    ```
 
-## How do I use it?
-1. Open "Command Prompt" or "Terminal" again
-2. Go to the folder where you saved the files
-3. Type `python sentiment_analysis.py` and press Enter
-4. The program will run and show you how well it's working
+3. Download the required NLTK data:
 
-## What if I want to analyze my own text?
-At the end of the `sentiment_analysis.py` file, you'll see this:
-```python
-new_text = 'I really enjoy using this service!'
-print(f'Sentiment: {predict_sentiment(new_text)}')
-```
-Change the text inside the quotes to whatever you want to analyze.
+   ```python
+   import nltk
+   nltk.download('punkt')
+   nltk.download('stopwords')
+   ```
 
-## Need help?
-If you're stuck, don't worry! Contact us at [Your Email/Contact Info] and we'll help you out.
+## Usage
+
+1. Run the script:
+
+   ```
+   python sentiment_analysis.py
+   ```
+
+2. The script will output:
+   - Model accuracy
+   - Classification report
+   - Sentiment prediction for a sample sentence
+
+3. To use the `classify` function in your own code:
+
+   ```python
+   from sentiment_analysis import classify
+
+   sentiment = classify("Your text here")
+   print(f"The sentiment is: {sentiment}")
+   ```
+
+## Customization
+
+- To use your own dataset, modify the `data` dictionary in the script.
+- Adjust the `test_size` parameter in the `train_test_split` function to change the ratio of training to testing data.
+- Experiment with different classifiers from scikit-learn by replacing `MultinomialNB()`.
+
+## License
+
+This project is open source and available under the [MIT License](https://opensource.org/licenses/MIT).
+
+## Contributing
+
+Contributions, issues, and feature requests are welcome. Feel free to check [issues page](https://github.com/yourusername/sentiment-analysis/issues) if you want to contribute.
+
+## Author
+
+[Your Name]
+
+## Acknowledgments
+
+- scikit-learn team for their excellent machine learning library
+- NLTK project for natural language processing tools
