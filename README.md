@@ -1,4 +1,4 @@
-[# Sentiment Analysis for Beginners
+ Sentiment Analysis for Beginners
 
 ## What is this?
 
