@@ -12,7 +12,7 @@ Tkinter: This project uses Tkinter for the GUI, which is included with Python.
 NLTK: This project uses the Natural Language Toolkit (NLTK) for text preprocessing and tokenization. You can install NLTK using pip: pip install nltk
 Scikit-learn: This project uses scikit-learn for the logistic regression model. You can install scikit-learn using pip: pip install scikit-learn
 Installation
-Clone this repository using Git: git clone https://github.com/your-username/sentiment-analysis.git
+Clone this repository using Git: git clone https://github.com/OSOSerious/sentiment-analysis
 Install the required libraries using pip: pip install nltk scikit-learn
 Download the NLTK data files using the following Python code: import nltk; nltk.download('punkt'); nltk.download('stopwords')
 Usage
