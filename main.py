@@ -1,3 +1,5 @@
+import tkinter as tk
+from tkinter import messagebox, filedialog
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -88,5 +90,56 @@ def predict_sentiment(text):
     text_vec = vectorizer.transform([text])
     return model.predict(text_vec)[0]
 
-new_text = 'This product exceeded my expectations!'
-print(f"Sentiment for '{new_text}': {predict_sentiment(new_text)}")
+def analyze_sentiment():
+    text = text_entry.get("1.0", "end-1c")
+    sentiment = predict_sentiment(text)
+    result = f"Sentiment: {sentiment}"
+    result_label.config(text=result)
+
+def save_text():
+    text = text_entry.get("1.0", "end-1c")
+    file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text Files", "*.txt")])
+    if file_path:
+        with open(file_path, "w") as file:
+            file.write(text)
+
+def load_text():
+    file_path = filedialog.askopenfilename(defaultextension=".txt", filetypes=[("Text Files", "*.txt")])
+    if file_path:
+        with open(file_path, "r") as file:
+            text = file.read()
+            text_entry.delete("1.0", tk.END)
+            text_entry.insert(tk.END, text)
+
+def clear_text():
+    text_entry.delete("1.0", tk.END)
+    result_label.config(text="")
+
+root = tk.Tk()
+root.title("Sentiment Analysis")
+
+text_label = tk.Label(root, text="Enter text to analyze:")
+text_label.pack()
+
+text_entry = tk.Text(root, height=10, width=50)
+text_entry.pack()
+
+button_frame = tk.Frame(root)
+button_frame.pack()
+
+analyze_button = tk.Button(button_frame, text="Analyze Sentiment", command=analyze_sentiment)
+analyze_button.pack(side=tk.LEFT)
+
+save_button = tk.Button(button_frame, text="Save Text", command=save_text)
+save_button.pack(side=tk.LEFT)
+
+load_button = tk.Button(button_frame, text="Load Text", command=load_text)
+load_button.pack(side=tk.LEFT)
+
+clear_button = tk.Button(button_frame, text="Clear Text", command=clear_text)
+clear_button.pack(side=tk.LEFT)
+
+result_label = tk.Label(root, text="")
+result_label.pack()
+
+root.mainloop()
